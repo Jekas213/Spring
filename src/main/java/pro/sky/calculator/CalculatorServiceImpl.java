@@ -4,39 +4,55 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CalculatorServiceImpl implements CalculatorService {
-    public String start() {
-        return "Старотовая страница";
-    }
 
     public String hello() {
         return "Добро пожаловать в калькулятор";
     }
 
     @Override
-    public String sum(int num1, int num2) {
-        int sum = num1 + num2;
+    public String plus(String num1, String num2) {
+        if (checkNull(num1, num2)) {
+            return "Ошибка";
+        }
+        int sum = Integer.parseInt(num1) + Integer.parseInt(num2);
         return num1 + " + " + num2 + " = " + sum;
     }
 
     @Override
-    public String subtraction(int num1, int num2) {
-        int sum = num1 - num2;
+    public String subtraction(String num1, String num2) {
+        if (checkNull(num1, num2)) {
+            return "Ошибка";
+        }
+        int sum = Integer.parseInt(num1) - Integer.parseInt(num2);
         return num1 + " - " + num2 + " = " + sum;
     }
 
     @Override
-    public String multiply(int num1, int num2) {
-        int sum = num1 * num2;
+    public String multiply(String num1, String num2) {
+        if (checkNull(num1, num2)) {
+            return "Ошибка";
+        }
+        int sum = Integer.parseInt(num1) * Integer.parseInt(num2);
         return num1 + " * " + num2 + " = " + sum;
     }
 
     @Override
-    public String divide(int num1, int num2) {
-        if (num2 == 0) {
+    public String divide(String num1, String num2) {
+        if (checkNull(num1, num2)) {
+            return "Ошибка";
+        } else if (Integer.parseInt(num2) == 0) {
             return "Делить на 0 нельзя";
         }
-        double sum = (double) num1 / (double) num2;
+        double sum = (double) Integer.parseInt(num1) / (double) Integer.parseInt(num2);
         return num1 + " / " + num2 + " = " + sum;
+    }
+
+    @Override
+    public boolean checkNull(String num1, String num2) {
+        if (num1.isBlank() || num2.isBlank()) {
+            return true;
+        }
+        return false;
     }
 
 }

@@ -1,16 +1,17 @@
 package pro.sky.calculator;
 
 public interface CalculatorService {
-    String start();
 
     String hello();
 
-    String sum(int num1, int num2);
+    String plus (String num1, String num2);
 
-    String subtraction(int num1, int num2);
+    String subtraction(String num1, String num2);
 
-    String multiply(int num1, int num2);
+    String multiply(String num1, String num2);
 
-    String divide(int num1, int num2);
+    String divide(String num1, String num2);
+
+    boolean checkNull (String num1, String num2);
 
 }
